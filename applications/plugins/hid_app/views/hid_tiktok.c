@@ -85,6 +85,10 @@ static void hid_tiktok_draw_callback(Canvas* canvas, void* context) {
         canvas_draw_icon(canvas, 94, 27, &I_Like_def_11x9);
     }
     // Exit
+    canvas_draw_icon(canvas, 0, 34, &I_Ok_btn_pressed_13x13);
+    canvas_set_font(canvas, FontSecondary);
+    elements_multiline_text_aligned(canvas, 13, 42, AlignLeft, AlignBottom, "Hold to save");
+
     canvas_draw_icon(canvas, 0, 54, &I_Pin_back_arrow_10x8);
     canvas_set_font(canvas, FontSecondary);
     elements_multiline_text_aligned(canvas, 13, 62, AlignLeft, AlignBottom, "Hold to exit");
@@ -193,8 +197,8 @@ static bool hid_tiktok_input_callback(InputEvent* event, void* context) {
                     consumed = false;
                 } else if(event->key == InputKeyOk) {
                     model->is_cursor_set = false;
-                    hid_hal_mouse_move(hid_tiktok->hid, 966, 1642)
-                    furi_delay_ms(50)
+                    hid_hal_mouse_move(hid_tiktok->hid, -58, 106);
+                    furi_delay_ms(50);
                     hid_hal_mouse_press(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
                     furi_delay_ms(50);
                     hid_hal_mouse_release(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
