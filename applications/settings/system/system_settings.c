@@ -106,7 +106,7 @@ static void time_format_changed(VariableItem* item) {
 }
 
 const char* const date_format_text[] = {
-    "D/M/Y",
+    "D.M.Y",
     "M/D/Y",
     "Y/M/D",
 };
