@@ -59,7 +59,7 @@ static void clock_render_callback(Canvas* const canvas, void* ctx) {
             date_string, DATE_LEN, CLOCK_ISO_DATE_FORMAT, curr_dt.year, curr_dt.month, curr_dt.day);
     } else if(state->date_format == LocaleDateFormatMDY) {
         snprintf(
-            date_string, DATE_LEN, CLOCK_RFC_DATE_FORMAT, curr_dt.month, curr_dt.day, curr_dt.year);
+            date_string, DATE_LEN, CLOCK_MDY_DATE_FORMAT, curr_dt.month, curr_dt.day, curr_dt.year);
     } else {
         snprintf(
             date_string, DATE_LEN, CLOCK_RFC_DATE_FORMAT, curr_dt.day, curr_dt.month, curr_dt.year);
