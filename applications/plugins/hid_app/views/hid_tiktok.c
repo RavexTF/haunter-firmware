@@ -84,11 +84,11 @@ static void hid_tiktok_draw_callback(Canvas* canvas, void* context) {
     } else {
         canvas_draw_icon(canvas, 94, 27, &I_Like_def_11x9);
     }
-    // Exit
-    canvas_draw_icon(canvas, 0, 34, &I_Ok_btn_pressed_13x13);
+    // Save
+    canvas_draw_icon(canvas, 0, 44, &I_Ok_btn_9x9);
     canvas_set_font(canvas, FontSecondary);
-    elements_multiline_text_aligned(canvas, 13, 42, AlignLeft, AlignBottom, "Hold to save");
-
+    elements_multiline_text_aligned(canvas, 13, 52, AlignLeft, AlignBottom, "Hold to save");
+    // Exit
     canvas_draw_icon(canvas, 0, 54, &I_Pin_back_arrow_10x8);
     canvas_set_font(canvas, FontSecondary);
     elements_multiline_text_aligned(canvas, 13, 62, AlignLeft, AlignBottom, "Hold to exit");
@@ -97,14 +97,17 @@ static void hid_tiktok_draw_callback(Canvas* canvas, void* context) {
 static void hid_tiktok_reset_cursor(HidTikTok* hid_tiktok) {
     // Set cursor to the phone's left up corner
     // Delays to guarantee one packet per connection interval
-    for(size_t i = 0; i < 8; i++) {
+    for(size_t i = 0; i < 25; i++) {
         hid_hal_mouse_move(hid_tiktok->hid, -127, -127);
         furi_delay_ms(50);
     }
     // Move cursor from the corner
-    //                                  x,  y
-    hid_hal_mouse_move(hid_tiktok->hid, 0, 250);
     furi_delay_ms(50);
+  //hid_hal_mouse_move(Hid* instance, int8_t dx, int8_t dy) {
+    for(size_t i = 0; i < 3; i++) {
+        hid_hal_mouse_move(hid_tiktok->hid, 10, 127);
+        furi_delay_ms(50);
+    }
 }
 
 static void
@@ -197,12 +200,27 @@ static bool hid_tiktok_input_callback(InputEvent* event, void* context) {
                     consumed = false;
                 } else if(event->key == InputKeyOk) {
                     model->is_cursor_set = false;
-                    hid_hal_mouse_move(hid_tiktok->hid, -58, 106);
+                    // Y Coordinate ( 280 -> 1650 )
+                    for(size_t i = 0; i < 14; i++) {
+                        hid_hal_mouse_move(hid_tiktok->hid, 0, 127);
+                        furi_delay_ms(50);
+                    }
+                    // X Coordinate ( 30 -> 995)
+                    for(size_t i = 0; i < 9; i++) {
+                        hid_hal_mouse_move(hid_tiktok->hid, 127, 0);
+                        furi_delay_ms(50);
+                    }
+                    hid_hal_mouse_move(hid_tiktok->hid, 100, 0);
                     furi_delay_ms(50);
+
                     hid_hal_mouse_press(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
                     furi_delay_ms(50);
                     hid_hal_mouse_release(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
                     consumed = true;
+
+                    furi_delay_ms(25);
+                    hid_tiktok_reset_cursor(hid_tiktok);
+                    model->is_cursor_set = true;
                 }
             }
         },
