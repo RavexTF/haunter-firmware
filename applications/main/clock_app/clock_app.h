@@ -5,8 +5,8 @@
 
 #define TAG "Clock"
 
-#define CLOCK_ISO_DATE_FORMAT "%.4d-%.2d-%.2d"
-#define CLOCK_RFC_DATE_FORMAT "%.2d-%.2d-%.4d"
+#define CLOCK_ISO_DATE_FORMAT "%.4d.%.2d.%.2d"
+#define CLOCK_RFC_DATE_FORMAT "%.2d.%.2d.%.4d"
 #define CLOCK_TIME_FORMAT "%.2d:%.2d:%.2d"
 
 #define MERIDIAN_FORMAT "%s"
