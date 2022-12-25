@@ -98,7 +98,8 @@ static void hid_tiktok_reset_cursor(HidTikTok* hid_tiktok) {
         furi_delay_ms(50);
     }
     // Move cursor from the corner
-    hid_hal_mouse_move(hid_tiktok->hid, 20, 120);
+    //                                  x,  y
+    hid_hal_mouse_move(hid_tiktok->hid, 0, 250);
     furi_delay_ms(50);
 }
 
@@ -166,20 +167,20 @@ static bool hid_tiktok_input_callback(InputEvent* event, void* context) {
                     hid_hal_mouse_release(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
                     consumed = true;
                 } else if(event->key == InputKeyUp) {
-                    // Emulate up swipe
-                    hid_hal_mouse_scroll(hid_tiktok->hid, -6);
-                    hid_hal_mouse_scroll(hid_tiktok->hid, -12);
-                    hid_hal_mouse_scroll(hid_tiktok->hid, -19);
-                    hid_hal_mouse_scroll(hid_tiktok->hid, -12);
-                    hid_hal_mouse_scroll(hid_tiktok->hid, -6);
-                    consumed = true;
-                } else if(event->key == InputKeyDown) {
                     // Emulate down swipe
                     hid_hal_mouse_scroll(hid_tiktok->hid, 6);
                     hid_hal_mouse_scroll(hid_tiktok->hid, 12);
                     hid_hal_mouse_scroll(hid_tiktok->hid, 19);
                     hid_hal_mouse_scroll(hid_tiktok->hid, 12);
                     hid_hal_mouse_scroll(hid_tiktok->hid, 6);
+                    consumed = true;
+                } else if(event->key == InputKeyDown) {
+                    // Emulate up swipe
+                    hid_hal_mouse_scroll(hid_tiktok->hid, -6);
+                    hid_hal_mouse_scroll(hid_tiktok->hid, -12);
+                    hid_hal_mouse_scroll(hid_tiktok->hid, -19);
+                    hid_hal_mouse_scroll(hid_tiktok->hid, -12);
+                    hid_hal_mouse_scroll(hid_tiktok->hid, -6);
                     consumed = true;
                 } else if(event->key == InputKeyBack) {
                     hid_hal_consumer_key_release_all(hid_tiktok->hid);
@@ -190,6 +191,14 @@ static bool hid_tiktok_input_callback(InputEvent* event, void* context) {
                     hid_hal_consumer_key_release_all(hid_tiktok->hid);
                     model->is_cursor_set = false;
                     consumed = false;
+                } else if(event->key == InputKeyOk) {
+                    model->is_cursor_set = false;
+                    hid_hal_mouse_move(hid_tiktok->hid, 966, 1642)
+                    furi_delay_ms(50)
+                    hid_hal_mouse_press(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
+                    furi_delay_ms(50);
+                    hid_hal_mouse_release(hid_tiktok->hid, HID_MOUSE_BTN_LEFT);
+                    consumed = true;
                 }
             }
         },
