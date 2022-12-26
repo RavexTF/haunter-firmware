@@ -57,3 +57,5 @@ openocd.log
 PVS-Studio.log
 
 .gdbinit
+
+buildRelease.sh
