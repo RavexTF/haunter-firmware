@@ -21,3 +21,12 @@ AlignH: Left
 AlignV: Center
 StartFrame: 10
 EndFrame: 13
+
+Slot: 0
+X: 71
+Y: 28
+Text: Working on CUFZ
+AlignH: Left
+AlignV: Center
+StartFrame: 10
+EndFrame: 13

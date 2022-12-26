@@ -30,3 +30,12 @@ AlignH: Right
 AlignV: Bottom
 StartFrame: 7
 EndFrame: 9
+
+Slot: 1
+X: 1
+Y: 23
+Text: CUFZ on TOP >>
+AlignH: Right
+AlignV: Bottom
+StartFrame: 7
+EndFrame: 9
