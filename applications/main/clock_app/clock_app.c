@@ -83,9 +83,10 @@ static void clock_render_callback(Canvas* const canvas, void* ctx) {
         canvas_draw_str_aligned(canvas, 64, 20, AlignCenter, AlignTop, date_string); // DRAW DATE
         elements_button_left(canvas, "Reset");
     } else {
-        canvas_draw_str_aligned(canvas, 64, 28, AlignCenter, AlignCenter, time_string);
+        canvas_draw_str_aligned(canvas, 64, 8, AlignCenter, AlignCenter, "フリッパー"); // DRAW TEXT
+        canvas_draw_str_aligned(canvas, 64, 28, AlignCenter, AlignCenter, time_string); // DRAW TIME
         canvas_set_font(canvas, FontSecondary);
-        canvas_draw_str_aligned(canvas, 64, 42, AlignCenter, AlignTop, date_string);
+        canvas_draw_str_aligned(canvas, 64, 42, AlignCenter, AlignTop, date_string); // DRAW DATE
 
         if(state->time_format == LocaleTimeFormat12h)
             canvas_draw_str_aligned(canvas, 65, 12, AlignCenter, AlignCenter, meridian_string);
