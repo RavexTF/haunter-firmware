@@ -4,9 +4,9 @@
 </a>
 </h3>
 
-### Welcome to the Flipper Zero Unleashed Firmware repo! 
+### Welcome to the Haunter Flipper Zero Firmware repo! 
 
-**This firmware is a fork from** [flipperdevices/flipperzero-firmware](https://github.com/flipperdevices/flipperzero-firmware)
+**This firmware is a fork from** [DarkFlippers/unleashed-firmware](https://github.com/DarkFlippers/unleashed-firmware)
 
 <br>
 
@@ -21,7 +21,7 @@ Please help us implement emulation for all Sub-GHz dynamic (rolling code) protoc
 <br>
 Our Discord Community:
 <br>
-<a href="https://discord.unleashedflip.com"><img src="https://discordapp.com/api/guilds/937479784148115456/widget.png?style=banner4" alt="Unofficial Discord Community" target="_blank"></a>
+<a href="https://discord.gg/K5qSmSmmVY"><img src="https://discordapp.com/api/guilds/937479784148115456/widget.png?style=banner4" alt="Haunter F0 Discord Community" target="_blank"></a>
 
 <br>
 <br>
