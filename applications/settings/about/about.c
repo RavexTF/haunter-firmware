@@ -56,10 +56,10 @@ static DialogMessageButton compliance_screen(DialogsApp* dialogs, DialogMessage*
     return result;
 }
 
-static DialogMessageButton unleashed_info_screen(DialogsApp* dialogs, DialogMessage* message) {
+static DialogMessageButton haunter_info_screen(DialogsApp* dialogs, DialogMessage* message) {
     DialogMessageButton result;
 
-    const char* screen_header = "Unleashed Firmware\n";
+    const char* screen_header = "Haunter Firmware\n";
 
     const char* screen_text = "Play with caution.\n"
                               "Not for illegal use!";
@@ -73,12 +73,12 @@ static DialogMessageButton unleashed_info_screen(DialogsApp* dialogs, DialogMess
     return result;
 }
 
-static DialogMessageButton unleashed_info_screen2(DialogsApp* dialogs, DialogMessage* message) {
+static DialogMessageButton haunter_info_screen2(DialogsApp* dialogs, DialogMessage* message) {
     DialogMessageButton result;
 
     const char* screen_text = "Custom plugins included\n"
                               "For updates & info visit\n"
-                              "github.com/DarkFlippers";
+                              "github.com/RavexTF";
 
     dialog_message_set_text(message, screen_text, 0, 0, AlignLeft, AlignTop);
     result = dialog_message_show(dialogs, message);
@@ -177,8 +177,8 @@ static DialogMessageButton fw_version_screen(DialogsApp* dialogs, DialogMessage*
 }
 
 const AboutDialogScreen about_screens[] = {
-    unleashed_info_screen,
-    unleashed_info_screen2,
+    haunter_info_screen,
+    haunter_info_screen2,
     product_screen,
     compliance_screen,
     address_screen,
