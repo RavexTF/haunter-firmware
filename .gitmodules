@@ -34,6 +34,6 @@
 [submodule "applications/plugins/dap_link/lib/free-dap"]
 	path = applications/plugins/dap_link/lib/free-dap
 	url = https://github.com/ataradov/free-dap.git
-[submodule "assets/resources/infrared"]
-	path = assets/resources/infrared
+[submodule "assets/resources/infrared/db"]
+	path = assets/resources/infrared/db
 	url = https://github.com/Lucaslhm/Flipper-IRDB
