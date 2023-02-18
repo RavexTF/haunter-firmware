@@ -28,14 +28,8 @@ const uint32_t auto_lock_delay_value[AUTO_LOCK_DELAY_COUNT] =
 
 #define BATTERY_VIEW_COUNT 6
 
-const char* const battery_view_count_text[BATTERY_VIEW_COUNT] = {
-    "Bar",
-    "%",
-    "Inv. %",
-    "Retro 3",
-    "Retro 5",
-    "Bar %"
-};
+const char* const battery_view_count_text[BATTERY_VIEW_COUNT] =
+    {"Bar", "%", "Inv. %", "Retro 3", "Retro 5", "Bar %"};
 
 const uint32_t displayBatteryPercentage_value[BATTERY_VIEW_COUNT] = {
     DISPLAY_BATTERY_BAR,
@@ -43,8 +37,7 @@ const uint32_t displayBatteryPercentage_value[BATTERY_VIEW_COUNT] = {
     DISPLAY_BATTERY_INVERTED_PERCENT,
     DISPLAY_BATTERY_RETRO_3,
     DISPLAY_BATTERY_RETRO_5,
-    DISPLAY_BATTERY_BAR_PERCENT
-};
+    DISPLAY_BATTERY_BAR_PERCENT};
 
 static void desktop_settings_scene_start_var_list_enter_callback(void* context, uint32_t index) {
     DesktopSettingsApp* app = context;
@@ -65,6 +58,14 @@ static void desktop_settings_scene_start_auto_lock_delay_changed(VariableItem* i
 
     variable_item_set_current_value_text(item, auto_lock_delay_text[index]);
     app->settings.auto_lock_delay_ms = auto_lock_delay_value[index];
+}
+
+static void desktop_settings_scene_start_auto_lock_pin_changed(VariableItem* item) {
+    DesktopSettingsApp* app = variable_item_get_context(item);
+    uint8_t value = variable_item_get_current_value_index(item);
+
+    variable_item_set_current_value_text(item, value ? "ON" : "OFF");
+    app->settings.auto_lock_with_pin = value;
 }
 
 void desktop_settings_scene_start_on_enter(void* context) {
@@ -93,6 +94,16 @@ void desktop_settings_scene_start_on_enter(void* context) {
         app->settings.auto_lock_delay_ms, auto_lock_delay_value, AUTO_LOCK_DELAY_COUNT);
     variable_item_set_current_value_index(item, value_index);
     variable_item_set_current_value_text(item, auto_lock_delay_text[value_index]);
+
+    item = variable_item_list_add(
+        variable_item_list,
+        "Auto Lock Pin",
+        2,
+        desktop_settings_scene_start_auto_lock_pin_changed,
+        app);
+
+    variable_item_set_current_value_index(item, app->settings.auto_lock_with_pin);
+    variable_item_set_current_value_text(item, app->settings.auto_lock_with_pin ? "ON" : "OFF");
 
     item = variable_item_list_add(
         variable_item_list,
