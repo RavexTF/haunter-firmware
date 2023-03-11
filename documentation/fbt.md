@@ -9,8 +9,8 @@ To use `fbt`, you only need `git` installed in your system.
 
 `fbt` by default downloads and unpacks a pre-built toolchain, and then modifies environment variables for itself to use it. It does not contaminate your global system's path with the toolchain.
  > However, if you wish to use tools supplied with the toolchain outside `fbt`, you can open an *fbt shell*, with properly configured environment.
- >    - On Windows, simply run `scripts/toochain/fbtenv.cmd`.
- >    - On Linux & MacOS, run `source scripts/toochain/fbtenv.sh` in a new shell.
+ >    - On Windows, simply run `scripts/toolchain/fbtenv.cmd`.
+ >    - On Linux & MacOS, run `source scripts/toolchain/fbtenv.sh` in a new shell.
  
  If your system is not supported by pre-built toolchain variants or you want to use custom versions of dependencies, you can `set FBT_NOENV=1`. `fbt` will skip toolchain & environment configuration and will expect all tools to be available on your system's `PATH`. *(this option is not available on Windows)*
  
@@ -72,7 +72,7 @@ To run cleanup (think of `make clean`) for specified targets, add the `-c` optio
 - `get_stlink` - output serial numbers for attached STLink probes. Used for specifying an adapter with `OPENOCD_ADAPTER_SERIAL=...`.
 - `lint`, `format` - run clang-format on the C source code to check and reformat it according to the `.clang-format` specs.
 - `lint_py`, `format_py` - run [black](https://black.readthedocs.io/en/stable/index.html) on the Python source code, build system files & application manifests.
-- `firmware_pvs` - generate a PVS Studio report for the firmware. Requires PVS Studio to be availabe on your system's `PATH`.
+- `firmware_pvs` - generate a PVS Studio report for the firmware. Requires PVS Studio to be available on your system's `PATH`.
 - `cli` - start a Flipper CLI session over USB.
 
 ### Firmware targets
